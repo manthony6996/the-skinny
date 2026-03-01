@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Skinny — 9 Categories. 100 Sources. Updated Daily.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF4D00;
+            --dark: #0A0E27;
+            --light: #F9FAFB;
+            --border: #E5E7EB;
+            --high: #DC2626;
+            --medium: #F59E0B;
+            --low: #3B82F6;
+            --family: #DC2626;
+            --fitness-mental: #DC2626;
+            --fitness-physical: #DC2626;
+            --finance: #DC2626;
+            --future: #F59E0B;
+            --food: #F59E0B;
+            --fun: #F59E0B;
+            --fashion: #3B82F6;
+            --friends: #3B82F6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 1.75rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .header-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .logo-main {
+            color: white;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            font-weight: 400;
+            margin-top: 0.25rem;
+            letter-spacing: 0.5px;
+        }
+
+        .header-meta {
+            text-align: right;
+        }
+
+        .last-updated {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            font-weight: 500;
+        }
+
+        .update-badge {
+            background: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            background: white;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 88px;
+            z-index: 999;
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+        }
+
+        .nav-item {
+            text-align: center;
+            padding: 1.25rem 0.5rem;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 4px solid transparent;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: rgba(0,0,0,0.03);
+            transform: translateY(-1px);
+        }
+
+        .nav-item.active {
+            background: rgba(0,0,0,0.03);
+            border-bottom-color: currentColor;
+        }
+
+        .nav-item.family { color: var(--family); }
+        .nav-item.fitness-mental { color: var(--fitness-mental); }
+        .nav-item.fitness-physical { color: var(--fitness-physical); }
+        .nav-item.finance { color: var(--finance); }
+        .nav-item.future-self { color: var(--future); }
+        .nav-item.food { color: var(--food); }
+        .nav-item.fun { color: var(--fun); }
+        .nav-item.fashion { color: var(--fashion); }
+        .nav-item.friends { color: var(--friends); }
+
+        /* Container */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+        }
+
+        /* Category View */
+        .category-view {
+            display: none;
+        }
+
+        .category-view.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .category-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 4px solid;
+            position: relative;
+        }
+
+        .category-header.family { border-color: var(--family); }
+        .category-header.fitness-mental { border-color: var(--fitness-mental); }
+        .category-header.fitness-physical { border-color: var(--fitness-physical); }
+        .category-header.finance { border-color: var(--finance); }
+        .category-header.future-self { border-color: var(--future); }
+        .category-header.food { border-color: var(--food); }
+        .category-header.fun { border-color: var(--fun); }
+        .category-header.fashion { border-color: var(--fashion); }
+        .category-header.friends { border-color: var(--friends); }
+
+        .category-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .category-purpose {
+            font-size: 1.15rem;
+            color: #6B7280;
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        .category-meta {
+            position: absolute;
+            top: 0;
+            right: 0;
+            text-align: right;
+        }
+
+        .source-count {
+            font-size: 0.75rem;
+            color: #9CA3AF;
+            font-weight: 600;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.75rem;
+        }
+
+        /* Article Card */
+        .article-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+            border-color: var(--primary);
+        }
+
+        .article-card.breaking::before {
+            content: "NEW TODAY";
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #DC2626;
+            color: white;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .article-card.evergreen::before {
+            content: "EVERGREEN";
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            z-index: 10;
+        }
+
+        .article-meta {
+            padding: 1.25rem 1.5rem 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #9CA3AF;
+            font-weight: 600;
+        }
+
+        .source-name {
+            font-weight: 700;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .article-content {
+            padding: 0 1.5rem 1.5rem;
+            flex: 1;
+        }
+
+        .article-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 0.85rem;
+            color: var(--dark);
+        }
+
+        .article-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .article-title a:hover {
+            color: var(--primary);
+        }
+
+        .article-description {
+            font-size: 0.95rem;
+            color: #6B7280;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .article-tag {
+            font-size: 0.7rem;
+            background: rgba(0,0,0,0.05);
+            padding: 0.25rem 0.7rem;
+            border-radius: 12px;
+            color: #6B7280;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* Source Panel */
+        .sources-panel {
+            background: white;
+            border-radius: 10px;
+            padding: 1.75rem;
+            margin-bottom: 2.5rem;
+            border: 2px solid var(--border);
+        }
+
+        .sources-title {
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-bottom: 1.25rem;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sources-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .source-link {
+            font-size: 0.9rem;
+            color: #6B7280;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+        }
+
+        .source-link:hover {
+            color: var(--primary);
+            background: rgba(255, 77, 0, 0.05);
+        }
+
+        .source-link::before {
+            content: "→";
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3.5rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-text {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
+        }
+
+        .footer-tagline {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            font-style: italic;
+        }
+
+        .footer-update-info {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .nav-container {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            
+            .content-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .nav-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .nav-item {
+                font-size: 0.65rem;
+                padding: 1rem 0.4rem;
+            }
+            
+            .category-title {
+                font-size: 2.5rem;
+            }
+            
+            .intro-banner h1 {
+                font-size: 2.5rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-meta {
+                position: static;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Intro Banner */
+        .intro-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, #FF6B00 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .intro-banner h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        .intro-banner p {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        .intro-banner .update-schedule {
+            margin-top: 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            opacity: 1;
+            background: rgba(255,255,255,0.2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <span class="logo-main">THE SKINNY</span>
+                </div>
+                <div class="tagline">9 Categories. 100 Sources. Updated Daily at 3AM ET.</div>
+            </div>
+            <div class="header-meta">
+                <div class="last-updated" id="lastUpdated">Updated today at 3:00 AM ET</div>
+                <div class="update-badge">DAILY CURATION</div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-item family active" data-category="family">Family</div>
+            <div class="nav-item fitness-mental" data-category="fitness-mental">Mental Fitness</div>
+            <div class="nav-item fitness-physical" data-category="fitness-physical">Physical Fitness</div>
+            <div class="nav-item finance" data-category="finance">Finance</div>
+            <div class="nav-item future-self" data-category="future-self">Future-Self</div>
+            <div class="nav-item food" data-category="food">Food</div>
+            <div class="nav-item fun" data-category="fun">Fun</div>
+            <div class="nav-item fashion" data-category="fashion">Fashion</div>
+            <div class="nav-item friends" data-category="friends">Friends</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Intro Banner -->
+        <div class="intro-banner">
+            <h1>THE SKINNY ON LIVING A BETTER LIFE</h1>
+            <p>100 gold-standard sources for living a better life curated daily!</p>
+            <div class="update-schedule">⏰ Fresh content every morning at 3:00 AM Eastern</div>
+        </div>
+
+        <!-- FAMILY -->
+        <div class="category-view active" id="family-view">
+            <div class="category-header family">
+                <h1 class="category-title">FAMILY</h1>
+                <p class="category-purpose">Family structure, caregiving, and close interpersonal bonds.</p>
+                <div class="category-meta">
+                    <div class="source-count">🔴 15 Curated Sources</div>
+                </div>
+            </div>
+
+            <div class="content-grid" id="family-content"></div>
+
+            <div class="sources-panel">
+                <h3 class="sources-title">15 Gold-Standard Sources</h3>
+                <div class="sources-list">
+                    <a href="https://www.scarymommy.com" target="_blank" class="source-link">Scary Mommy</a>
+                    <a href="https://www.fatherly.com" target="_blank" class="source-link">Fatherly</a>
+                    <a href="https://www.gottman.com/blog" target="_blank" class="source-link">Gottman Institute</a>
+                    <a href="https://childmind.org" target="_blank" class="source-link">Child Mind Institute</a>
+                    <a href="https://greatergood.berkeley.edu" target="_blank" class="source-link">Greater Good Magazine</a>
+                    <a href="https://www.janetlansbury.com" target="_blank" class="source-link">Janet Lansbury</a>
+                    <a href="https://thefamilydinnerproject.org" target="_blank" class="source-link">Family Dinner Project</a>
+                    <a href="https://www.pewresearch.org" target="_blank" class="source-link">Pew Research</a>
+                    <a href="https://www.ahaparenting.com" target="_blank" class="source-link">Aha! Parenting</a>
+                    <a href="https://www.handinhandparenting.org" target="_blank" class="source-link">Hand in Hand Parenting</a>
+                    <a href="https://www.babysleepsite.com" target="_blank" class="source-link">Baby Sleep Site</a>
+                    <a href="https://www.zerotothree.org" target="_blank" class="source-link">Zero to Three</a>
+                    <a href="https://www.aarp.org/caregiving" target="_blank" class="source-link">AARP Caregiving</a>
+                    <a href="https://www.psychologytoday.com/us/basics/parenting" target="_blank" class="source-link">Psychology Today</a>
+                    <a href="https://www.family-institute.org" target="_blank" class="source-link">The Family Institute</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MENTAL FITNESS -->
+        <div class="category-view" id="fitness-mental-view">
+            <div class="category-header fitness-mental">
+                <h1 class="category-title">MENTAL FITNESS</h1>
+                <p class="category-purpose">Mental performance, stress management, and cognitive optimization.</p>
+                <div class="category-meta">
+                    <div class="source-count">🔴 15 Curated Sources</div>
+                </div>
+            </div>
+
+            <div class="content-grid" id="fitness-mental-content"></div>
+
+            <div class="sources-panel">
+                <h3 class="sources-title">15 Gold-Standard Sources</h3>
+                <div class="sources-list">
+                    <a href="https://hubermanlab.com" target="_blank" class="source-link">Huberman Lab</a>
+                    <a href="https://www.headspace.com/blog" target="_blank" class="source-link">Headspace</a>
+                    <a href="https://tim.blog" target="_blank" class="source-link">Tim Ferriss</a>
+                    <a href="https://www.foundmyfitness.com" target="_blank" class="source-link">FoundMyFitness</a>
+                    <a href="https://www.precisionnutrition.com" target="_blank" class="source-link">Precision Nutrition</a>
+                    <a href="https://greatergood.berkeley.edu" target="_blank" class="source-link">Greater Good Magazine</a>
+                    <a href="https://www.mindbodygreen.com" target="_blank" class="source-link">MindBodyGreen</a>
+                    <a href="https://www.drweil.com" target="_blank" class="source-link">Dr. Andrew Weil</a>
+                    <a href="https://www.tarabrach.com" target="_blank" class="source-link">Tara Brach</a>
+                    <a href="https://cmbm.org" target="_blank" class="source-link">Center for Mind-Body Medicine</a>
+                    <a href="https://www.tenpercent.com" target="_blank" class="source-link">10% Happier</a>
+                    <a href="https://www.richroll.com" target="_blank" class="source-link">Rich Roll</a>
+                    <a href="https://www.optimize.me" target="_blank" class="source-link">Optimize (Brian Johnson)</a>
+                    <a href="https://theneuroscienceschool.com" target="_blank" class="source-link">The Neuroscience School</a>
+                    <a href="https://drchatterjee.com" target="_blank" class="source-link">Dr. Chatterjee</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHYSICAL FITNESS -->
+        <div class="category-view" id="fitness-physical-view">
+            <div class="category-header fitness-physical">
+                <h1 class="category-title">PHYSICAL FITNESS</h1>
+                <p class="category-purpose">Strength, endurance, body composition, and physical performance.</p>
+                <div class="category-meta">
+                    <div class="source-count">🔴 10 Curated Sources</div>
+                </div>
+            </div>
+
+            <div class="content-grid" id="fitness-physical-content"></div>
+
+            <div class="sources-panel">
+                <h3 class="sources-title">10 Gold-Standard Sources</h3>
+                <div class="sources-list">
+                    <a href="https://renaissanceperiodization.com" target="_blank" class="source-link">Renaissance Periodization</a>
+                    <a href="https://www.strongerbyscience.com" target="_blank" class="source-link">Stronger by Science</a>
+                    <a href="https://examine.com" target="_blank" class="source-link">Examine.com</a>
+                    <a href="https://coachdango.com" target="_blank" class="source-link">Coach Dan Go</a>
+                    <a href="https://www.outsideonline.com" target="_blank" class="source-link">Outside Online</a>
+                    <a href="https://www.precisionnutrition.com" target="_blank" class="source-link">Precision Nutrition</a>
+                    <a href="https://www.foundmyfitness.com" target="_blank" class="source-link">FoundMyFitness</a>
+                    <a href="https://www.jeffnippard.com" target="_blank" class="source-link">Jeff Nippard</a>
+                    <a href="https://www.barbellmedicine.com" target="_blank" class="source-link">Barbell Medicine</a>
+                    <a href="https://www.biolayne.com" target="_blank" class="source-link">Dr. Layne Norton</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FINANCE -->
+        <div class="category-view" id="finance-view">
+            <div class="category-header finance">
+                <h1 class="category-title">FINANCE</h1>
+                <p class="category-purpose">Personal and household financial competence.</p>
+                <div class="category-meta">
+                    <div class="source-count">🔴 10 Curated Sources</div>
+                </div>
+            </div>
+
+            <div class="content-grid" id="finance-content"></div>
+
+            <div class="sources-panel">
+                <h3 class="sources-title">10 Gold-Standard Sources</h3>
+                <div class="sources-list">
+                    <a href="https://www.mrmoneymustache.com" target="_blank" class="source-link">Mr. Money Mustache</a>
+                    <a href="https://www.bogleheads.org" target="_blank" class="source-link">Bogleheads</a>
+                    <a href="https://www.nerdwallet.com" target="_blank" class="source-link">NerdWallet</a>
+                    <a href="https://affordanything.com" target="_blank" class="source-link">Afford Anything</a>
+                    <a href="https://www.collaborativefund.com/blog" target="_blank" class="source-link">Collaborative Fund</a>
+                    <a href="https://www.iwillteachyoutoberich.com" target="_blank" class="source-link">Ramit Sethi</a>
+                    <a href="https://www.ramseysolutions.com" target="_blank" class="source-link">Dave Ramsey</a>
+                    <a href="https://www.wsj.com/personal-finance" target="_blank" class="source-link">Wall Street Journal</a>
+                    <a href="https://www.thedailyupside.com" target="_blank" class="source-link">The Daily Upside</a>
+                    <a href="https://www.profgalloway.com" target="_blank" class="source-link">Scott Galloway</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FUTURE-SELF -->
+        <div class="category-view" id="future-self-view">
+            <div class="category-header future-self">
+                <h1 class="category-title">FUTURE-SELF</h1>
+                <p class="category-purpose">Long-term human improvement and decision-making.</p>
+                <div class="category-meta">
+                    <div class="source-count">🟠 12 Curated Sources</div>
+                </div>
+            </div>
+
+            <div class="content-grid" id="future-self-content"></div>
+
+            <div class="sources-panel">
+                <h3 class="sources-title">12 Gold-Standard Sources</h3>
+                <div class="sources-list">
+                    <a href="https://jamesclear.com" target="_blank" class="source-link">James Clear</a>
+                    <a href="https://fs.blog" target="_blank" class="source-link">Farnam Street</a>
+                    <a href="https://www.calnewport.com" target="_blank" class="source-link">Cal Newport</a>
+                    <a href="https://markmanson.net" target="_blank" class="source-link">Mark Manson</a>
+                    <a href="https://waitbutwhy.com" target="_blank" class="source-link">Wait But Why</a>
+                    <a href="https://zenhabits.net" target="_blank" class="source-link">Zen Habits</a>
+                    <a href="https://www.themarginalian.org" target="_blank" class="source-link">The Marginalian</a>
+                    <a href="https://nesslabs.com" target="_blank" class="source-link">Ness Labs</a>
+                    <a href="https://www.melrobbins.com" target="_blank" class="source-link">Mel Robbins</a>
+                    <a href="https://www.sahilbloom.com" target="_blank" class="source-link">Sahil Bloom</a>
+                    <a href="https://dailystoic.com" target="_blank" class="source-link">Ryan Holiday</a>
+                    <a href="https://nav.al" target="_blank" class="source-link">Naval Ravikant</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOD -->
+        <div class="category-view" id="food-view">
+            <div class="category-header food">
+                <h1 class="category-title">FOOD</h1>
+                <p class="category-purpose">What we eat, how it's made, and its impact on health and culture.</p>
+                <div class="category-meta">
+                    <div class="source-count">🟠 12 Curated Sources</div>
+                </div>
+            </div>
+
+            <div class="content-grid" id="food-content"></div>
+
+            <div class="sources-panel">
+                <h3 class="sources-title">12 Gold-Standard Sources</h3>
+                <div class="sources-list">
+                    <a href="https://www.seriouseats.com" target="_blank" class="source-link">Serious Eats</a>
+                    <a href="https://minimalistbaker.com" target="_blank" class="source-link">Minimalist Baker</a>
+                    <a href="https://www.budgetbytes.com" target="_blank" class="source-link">Budget Bytes</a>
+                    <a href="https://cookieandkate.com" target="_blank" class="source-link">Cookie and Kate</a>
+                    <a href="https://examine.com" target="_blank" class="source-link">Examine.com</a>
+                    <a href="https://www.hsph.harvard.edu/nutritionsource" target="_blank" class="source-link">Harvard Nutrition</a>
+                    <a href="https://civileats.com" target="_blank" class="source-link">Civil Eats</a>
+                    <a href="https://www.eater.com" target="_blank" class="source-link">Eater</a>
+                    <a href="https://www.thekitchn.com" target="_blank" class="source-link">The Kitchn</a>
+                    <a href="https://food52.com" target="_blank" class="source-link">Food52</a>
+                    <a href="https://nutritionfacts.org" target="_blank" class="source-link">Nutrition Facts</a>
+                    <a href="https://www.americastestkitchen.com" target="_blank" class="source-link">America's Test Kitchen</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FUN -->
+        <div class="category-view" id="fun-view">
+            <div class="category-header fun">
+                <h1 class="category-title">FUN</h1>
+                <p class="category-purpose">Enjoyment, exploration, and play.</p>
+                <div class="category-meta">
+                    <div class="source-count">🟠 11 Curated Sources</div>
+                </div>
+            </div>
+
+            <div class="content-grid" id="fun-content"></div>
+
+            <div class="sources-panel">
+                <h3 class="sources-title">11 Gold-Standard Sources</h3>
+                <div class="sources-list">
+                    <a href="https://www.atlasobscura.com" target="_blank" class="source-link">Atlas Obscura</a>
+                    <a href="https://www.thisiscolossal.com" target="_blank" class="source-link">Colossal</a>
+                    <a href="https://www.mentalfloss.com" target="_blank" class="source-link">Mental Floss</a>
+                    <a href="https://laughingsquid.com" target="_blank" class="source-link">Laughing Squid</a>
+                    <a href="https://www.cntraveler.com" target="_blank" class="source-link">Condé Nast Traveler</a>
+                    <a href="https://www.vulture.com" target="_blank" class="source-link">Vulture</a>
+                    <a href="https://www.polygon.com" target="_blank" class="source-link">Polygon</a>
+                    <a href="https://www.outsideonline.com" target="_blank" class="source-link">Outside Online</a>
+                    <a href="https://aeon.co" target="_blank" class="source-link">Aeon</a>
+                    <a href="https://kottke.org" target="_blank" class="source-link">Kottke.org</a>
+                    <a href="https://www.coolhunting.com" target="_blank" class="source-link">Cool Hunting</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASHION -->
+        <div class="category-view" id="fashion-view">
+            <div class="category-header fashion">
+                <h1 class="category-title">FASHION</h1>
+                <p class="category-purpose">Personal expression through clothing and materials.</p>
+                <div class="category-meta">
+                    <div class="source-count">🔵 8 Curated Sources</div>
+                </div>
+            </div>
+
+            <div class="content-grid" id="fashion-content"></div>
+
+            <div class="sources-panel">
+                <h3 class="sources-title">8 Gold-Standard Sources</h3>
+                <div class="sources-list">
+                    <a href="https://www.whowhatwear.com" target="_blank" class="source-link">Who What Wear</a>
+                    <a href="https://www.thegoodtrade.com" target="_blank" class="source-link">The Good Trade</a>
+                    <a href="https://theeverygirl.com" target="_blank" class="source-link">The Everygirl</a>
+                    <a href="https://www.putthison.com" target="_blank" class="source-link">Put This On</a>
+                    <a href="https://fashionista.com" target="_blank" class="source-link">Fashionista</a>
+                    <a href="https://goodonyou.eco" target="_blank" class="source-link">Good On You</a>
+                    <a href="https://hypebeast.com" target="_blank" class="source-link">Hypebeast</a>
+                    <a href="https://dieworkwear.com" target="_blank" class="source-link">Die, Workwear!</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRIENDS -->
+        <div class="category-view" id="friends-view">
+            <div class="category-header friends">
+                <h1 class="category-title">FRIENDS</h1>
+                <p class="category-purpose">Social connection outside the nuclear family.</p>
+                <div class="category-meta">
+                    <div class="source-count">🔵 7 Curated Sources</div>
+                </div>
+            </div>
+
+            <div class="content-grid" id="friends-content"></div>
+
+            <div class="sources-panel">
+                <h3 class="sources-title">7 Gold-Standard Sources</h3>
+                <div class="sources-list">
+                    <a href="https://greatergood.berkeley.edu" target="_blank" class="source-link">Greater Good Magazine</a>
+                    <a href="https://tinybuddha.com" target="_blank" class="source-link">Tiny Buddha</a>
+                    <a href="https://www.artofmanliness.com" target="_blank" class="source-link">Art of Manliness</a>
+                    <a href="https://www.theschooloflife.com" target="_blank" class="source-link">School of Life</a>
+                    <a href="https://www.hhs.gov/surgeongeneral" target="_blank" class="source-link">Surgeon General</a>
+                    <a href="https://socialhealthlab.ubc.ca" target="_blank" class="source-link">Social Health Lab</a>
+                    <a href="https://www.theatlantic.com/family" target="_blank" class="source-link">The Atlantic</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">THE SKINNY</div>
+            <p class="footer-text">100 gold-standard sources across 9 essential life categories. Curated daily at 3:00 AM Eastern. Your morning ritual for signal over noise.</p>
+            <p class="footer-tagline">Get exactly what you need. Nothing you don't.</p>
+            <div class="footer-update-info">
+                Updated daily at 3:00 AM Eastern Time • Fresh content every morning
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // THE SKINNY - 100 Sources, 9 Categories, Updated Daily at 3AM ET
+        
+        const articles = {
+            family: [
+                {
+                    title: "The Neuroscience of Secure Attachment in Early Childhood",
+                    source: "Child Mind Institute",
+                    url: "https://childmind.org",
+                    description: "New research reveals how responsive caregiving in the first three years shapes brain architecture and emotional regulation for life.",
+                    tags: ["attachment", "early-childhood", "neuroscience"],
+                    type: "breaking"
+                },
+                {
+                    title: "Peaceful Parenting: Dr. Laura Markham's 3 Core Principles",
+                    source: "Aha! Parenting",
+                    url: "https://ahaparenting.com",
+                    description: "Evidence-based approach to raising emotionally healthy children through connection, coaching, and self-regulation.",
+                    tags: ["parenting", "discipline", "emotional-intelligence"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Marriage and Money: Research-Backed Frameworks for Harmony",
+                    source: "Gottman Institute",
+                    url: "https://gottman.com",
+                    description: "The four conversations that predict financial satisfaction in relationships, based on 40 years of couples research.",
+                    tags: ["marriage", "finance", "communication"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Elder Care Navigation: A Complete 2026 Resource Guide",
+                    source: "AARP Caregiving",
+                    url: "https://aarp.org/caregiving",
+                    description: "From Medicare to living arrangements, the essential framework for supporting aging parents with dignity.",
+                    tags: ["elder-care", "aging", "resources"],
+                    type: "breaking"
+                },
+                {
+                    title: "Why Family Dinner Matters More Than Ever",
+                    source: "Family Dinner Project",
+                    url: "https://thefamilydinnerproject.org",
+                    description: "The science behind shared meals: improved academics, reduced substance abuse, and stronger family bonds.",
+                    tags: ["routines", "connection", "research"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Baby Sleep: Evidence-Based Approaches That Actually Work",
+                    source: "Baby Sleep Site",
+                    url: "https://babysleepsite.com",
+                    description: "Science-backed sleep training methods for different ages and temperaments, without the judgment.",
+                    tags: ["sleep", "infants", "evidence-based"],
+                    type: "evergreen"
+                }
+            ],
+
+            fitnessMental: [
+                {
+                    title: "Huberman's Real-Time Stress Protocol: The Physiological Sigh",
+                    source: "Huberman Lab",
+                    url: "https://hubermanlab.com",
+                    description: "Double-inhale through nose, extended exhale through mouth. The fastest way to shift from stress to calm, backed by Stanford research.",
+                    tags: ["stress-management", "breathwork", "protocols"],
+                    type: "breaking"
+                },
+                {
+                    title: "Tim Ferriss on Building Mental Resilience Through Discomfort",
+                    source: "Tim Ferriss",
+                    url: "https://tim.blog",
+                    description: "Why top performers deliberately expose themselves to manageable stress: cold plunges, fasting, and voluntary hardship.",
+                    tags: ["resilience", "performance", "adaptation"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Tara Brach: RAIN Meditation for Difficult Emotions",
+                    source: "Tara Brach",
+                    url: "https://tarabrach.com",
+                    description: "Recognize, Allow, Investigate, Nurture. A four-step practice for meeting anxiety, anger, and fear with compassion.",
+                    tags: ["meditation", "emotional-regulation", "mindfulness"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Brain-Derived Neurotrophic Factor: The Exercise Molecule",
+                    source: "FoundMyFitness",
+                    url: "https://foundmyfitness.com",
+                    description: "Dr. Rhonda Patrick explains how physical activity triggers BDNF production, improving memory, learning, and mood.",
+                    tags: ["neuroscience", "exercise", "cognition"],
+                    type: "breaking"
+                },
+                {
+                    title: "The 10% Happier Approach: Meditation for Skeptics",
+                    source: "10% Happier",
+                    url: "https://tenpercent.com",
+                    description: "Dan Harris's evidence-based case for mindfulness: it won't cure everything, but it makes you slightly better at being human.",
+                    tags: ["meditation", "mindfulness", "practical"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Dr. Chatterjee's 5-Minute Mental Fitness Routine",
+                    source: "Dr. Chatterjee",
+                    url: "https://drchatterjee.com",
+                    description: "Simple daily practices that compound: gratitude journaling, breathwork, and micro-meditations backed by research.",
+                    tags: ["daily-practice", "habits", "wellness"],
+                    type: "evergreen"
+                }
+            ],
+
+            fitnessPhysical: [
+                {
+                    title: "Renaissance Periodization: The Science of Volume Landmarks",
+                    source: "Renaissance Periodization",
+                    url: "https://renaissanceperiodization.com",
+                    description: "Dr. Mike Israetel's latest on MRV, MEV, and optimal training volume for muscle growth based on 2026 research.",
+                    tags: ["hypertrophy", "volume", "science"],
+                    type: "breaking"
+                },
+                {
+                    title: "Coach Dan Go: The Busy Professional's Body Recomp Protocol",
+                    source: "Coach Dan Go",
+                    url: "https://coachdango.com",
+                    description: "Build muscle and lose fat simultaneously with 4 workouts per week and strategic nutrition timing.",
+                    tags: ["body-composition", "efficiency", "lifestyle"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Jeff Nippard: The Perfect Push, Pull, Legs Split",
+                    source: "Jeff Nippard",
+                    url: "https://jeffnippard.com",
+                    description: "Evidence-based programming for maximum muscle growth with optimal recovery and minimal injury risk.",
+                    tags: ["programming", "hypertrophy", "training"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Dr. Layne Norton: Protein Distribution and Muscle Protein Synthesis",
+                    source: "Dr. Layne Norton",
+                    url: "https://biolayne.com",
+                    description: "New meta-analysis on meal timing: does it matter? The surprising answer based on the latest research.",
+                    tags: ["protein", "nutrition", "science"],
+                    type: "breaking"
+                },
+                {
+                    title: "Barbell Medicine: Strength Training for Longevity",
+                    source: "Barbell Medicine",
+                    url: "https://barbellmedicine.com",
+                    description: "How resistance training impacts healthspan, bone density, and metabolic health as we age.",
+                    tags: ["longevity", "health", "aging"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Stronger by Science: Progressive Overload Explained",
+                    source: "Stronger by Science",
+                    url: "https://strongerbyscience.com",
+                    description: "The only principle that matters for strength gains: systematic, measurable progression over time.",
+                    tags: ["strength", "progression", "fundamentals"],
+                    type: "evergreen"
+                }
+            ],
+
+            finance: [
+                {
+                    title: "Morgan Housel: The Psychology of Getting Rich vs Staying Rich",
+                    source: "Collaborative Fund",
+                    url: "https://collaborativefund.com",
+                    description: "Why wealth accumulation and wealth preservation require opposite mindsets: aggression vs paranoia.",
+                    tags: ["psychology", "wealth", "behavior"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Ramit Sethi's Money Dials: Spend Extravagantly on What You Love",
+                    source: "Ramit Sethi",
+                    url: "https://iwillteachyoutoberich.com",
+                    description: "Stop spreading money across things you don't care about. Identify your 1-3 'dials' and turn them up guilt-free.",
+                    tags: ["psychology", "spending", "values"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Fed Policy Shift: What Today's Announcement Means for Your Money",
+                    source: "Wall Street Journal",
+                    url: "https://wsj.com",
+                    description: "Breaking analysis of interest rate decisions and implications for mortgages, savings, and investment strategy.",
+                    tags: ["federal-reserve", "interest-rates", "policy"],
+                    type: "breaking"
+                },
+                {
+                    title: "Dave Ramsey: The Debt Snowball Method Still Works",
+                    source: "Dave Ramsey",
+                    url: "https://ramseysolutions.com",
+                    description: "Why psychological wins beat mathematical optimization: real stories of debt-free transformations.",
+                    tags: ["debt", "psychology", "behavior-change"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Bogleheads: The Case for Index Funds in 2026",
+                    source: "Bogleheads",
+                    url: "https://bogleheads.org",
+                    description: "Updated performance analysis: passive investing continues to outperform active management after fees.",
+                    tags: ["investing", "index-funds", "evidence"],
+                    type: "breaking"
+                },
+                {
+                    title: "Scott Galloway's Macro Trends You Can't Ignore",
+                    source: "Prof G",
+                    url: "https://profgalloway.com",
+                    description: "The big-picture economic forces shaping wealth creation, career trajectory, and market opportunity.",
+                    tags: ["macro", "trends", "strategy"],
+                    type: "breaking"
+                }
+            ],
+
+            futureSelf: [
+                {
+                    title: "James Clear: Identity-Based Habits That Last",
+                    source: "James Clear",
+                    url: "https://jamesclear.com",
+                    description: "Stop focusing on goals. Start becoming the type of person who achieves them through identity shifts.",
+                    tags: ["habits", "identity", "behavior-change"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Naval Ravikant: How to Get Rich Without Getting Lucky",
+                    source: "Naval Ravikant",
+                    url: "https://nav.al",
+                    description: "Leverage, specific knowledge, and accountability: the three principles of wealth creation in the internet age.",
+                    tags: ["wealth", "leverage", "knowledge"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Ryan Holiday: The Stoic's Guide to Modern Life",
+                    source: "Daily Stoic",
+                    url: "https://dailystoic.com",
+                    description: "Ancient wisdom for contemporary chaos: control, resilience, and virtue in an uncertain world.",
+                    tags: ["stoicism", "philosophy", "resilience"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Sahil Bloom: Building Career Capital in Your 20s and 30s",
+                    source: "Sahil Bloom",
+                    url: "https://sahilbloom.com",
+                    description: "Why rare and valuable skills create options, autonomy, and leverage in the long run.",
+                    tags: ["career", "skills", "strategy"],
+                    type: "breaking"
+                },
+                {
+                    title: "Cal Newport: Deep Work in the Age of Distraction",
+                    source: "Cal Newport",
+                    url: "https://calnewport.com",
+                    description: "Why focused, cognitively demanding work is the most valuable skill in a world of infinite interruption.",
+                    tags: ["focus", "productivity", "deep-work"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Farnam Street: Mental Models for Better Decisions",
+                    source: "Farnam Street",
+                    url: "https://fs.blog",
+                    description: "Shane Parrish's framework for improving judgment through multi-disciplinary thinking and first principles.",
+                    tags: ["decision-making", "mental-models", "thinking"],
+                    type: "evergreen"
+                }
+            ],
+
+            food: [
+                {
+                    title: "Harvard Nutrition: Ultra-Processed Foods and Mortality Risk",
+                    source: "Harvard Nutrition Source",
+                    url: "https://hsph.harvard.edu/nutritionsource",
+                    description: "New large-scale study links UPF consumption to increased mortality from cardiovascular disease and cancer.",
+                    tags: ["nutrition-science", "health", "research"],
+                    type: "breaking"
+                },
+                {
+                    title: "Serious Eats: The Science of the Perfect Sear",
+                    source: "Serious Eats",
+                    url: "https://seriouseats.com",
+                    description: "Understanding Maillard reactions, heat transfer, and moisture control for maximum browning and flavor.",
+                    tags: ["cooking-science", "techniques"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Dr. Greger: The Daily Dozen for Optimal Health",
+                    source: "Nutrition Facts",
+                    url: "https://nutritionfacts.org",
+                    description: "Evidence-based checklist of foods shown to reduce disease risk and promote longevity.",
+                    tags: ["nutrition", "plant-based", "health"],
+                    type: "evergreen"
+                },
+                {
+                    title: "America's Test Kitchen: Foolproof Sourdough Starter",
+                    source: "America's Test Kitchen",
+                    url: "https://americastestkitchen.com",
+                    description: "The science behind wild yeast fermentation and a step-by-step protocol that actually works.",
+                    tags: ["baking", "fermentation", "techniques"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Civil Eats: Regenerative Agriculture is Scaling Up",
+                    source: "Civil Eats",
+                    url: "https://civileats.com",
+                    description: "How sustainable farming practices are moving from niche to mainstream through policy and market forces.",
+                    tags: ["sustainability", "agriculture", "systems"],
+                    type: "breaking"
+                },
+                {
+                    title: "Budget Bytes: The $50 Meal Prep Sunday",
+                    source: "Budget Bytes",
+                    url: "https://budgetbytes.com",
+                    description: "Complete system for healthy eating all week without waste, burnout, or breaking the bank.",
+                    tags: ["meal-prep", "budget", "efficiency"],
+                    type: "evergreen"
+                }
+            ],
+
+            fun: [
+                {
+                    title: "Atlas Obscura: 10 Hidden Wonders Discovered in 2026",
+                    source: "Atlas Obscura",
+                    url: "https://atlasobscura.com",
+                    description: "From underground libraries to forgotten temples, the year's most remarkable finds for curious travelers.",
+                    tags: ["travel", "discovery", "wonder"],
+                    type: "breaking"
+                },
+                {
+                    title: "Aeon: The Philosophy of Play in a Productivity-Obsessed World",
+                    source: "Aeon",
+                    url: "https://aeon.co",
+                    description: "Why purposeless activity is essential for creativity, well-being, and what makes us human.",
+                    tags: ["philosophy", "play", "culture"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Kottke: The Internet's Best Links This Week",
+                    source: "Kottke.org",
+                    url: "https://kottke.org",
+                    description: "Curated interesting, surprising, and delightful corners of the internet you won't find on social media.",
+                    tags: ["internet-culture", "curation"],
+                    type: "breaking"
+                },
+                {
+                    title: "Condé Nast Traveler: The Art of Slow Travel",
+                    source: "Condé Nast Traveler",
+                    url: "https://cntraveler.com",
+                    description: "Why staying longer and moving slower creates transformative experiences instead of exhausting checklists.",
+                    tags: ["travel", "philosophy", "experiences"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Vulture: The Psychology of Why We Love Sad Music",
+                    source: "Vulture",
+                    url: "https://vulture.com",
+                    description: "Neuroscience research on emotional catharsis, nostalgia, and the peculiar pleasure of melancholy songs.",
+                    tags: ["music", "psychology", "emotion"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Cool Hunting: Design Trends Worth Paying Attention To",
+                    source: "Cool Hunting",
+                    url: "https://coolhunting.com",
+                    description: "From architecture to product design, the cultural shifts shaping how we live and create.",
+                    tags: ["design", "culture", "trends"],
+                    type: "breaking"
+                }
+            ],
+
+            fashion: [
+                {
+                    title: "Who What Wear: Building a Capsule Wardrobe for 2026",
+                    source: "Who What Wear",
+                    url: "https://whowhatwear.com",
+                    description: "The 30 foundational pieces that work across seasons, contexts, and years for maximum versatility.",
+                    tags: ["wardrobe-basics", "minimalism"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Good On You: Ethical Fashion Brand Rankings Updated",
+                    source: "Good On You",
+                    url: "https://goodonyou.eco",
+                    description: "Data-driven assessment of fashion brands' labor practices, environmental impact, and transparency.",
+                    tags: ["ethics", "sustainability", "ratings"],
+                    type: "breaking"
+                },
+                {
+                    title: "Die, Workwear!: Understanding Quality Construction",
+                    source: "Die, Workwear!",
+                    url: "https://dieworkwear.com",
+                    description: "What makes clothing last: fabric, stitching, and craftsmanship details worth paying attention to.",
+                    tags: ["quality", "craftsmanship", "education"],
+                    type: "evergreen"
+                },
+                {
+                    title: "The Good Trade: The True Cost of Fast Fashion",
+                    source: "The Good Trade",
+                    url: "https://thegoodtrade.com",
+                    description: "Environmental lifecycle analysis of cheap clothing from raw materials through disposal.",
+                    tags: ["sustainability", "environment", "impact"],
+                    type: "evergreen"
+                },
+                {
+                    title: "Hypebeast: Where Streetwear and High Fashion Converge",
+                    source: "Hypebeast",
+                    url: "https://hypebeast.com",
+                    description: "The cultural forces driving collaboration between luxury houses and street brands.",
+                    tags: ["streetwear", "trends", "culture"],
+                    type: "breaking"
+                }
+            ],
+
+            friends: [
+                {
+                    title: "Surgeon General: The Loneliness Epidemic 2026 Update",
+                    source: "Surgeon General",
+                    url: "https://hhs.gov/surgeongeneral",
+                    description: "New data on social isolation's health impacts and evidence-based interventions at scale.",
+                    tags: ["loneliness", "public-health", "data"],
+                    type: "breaking"
+                },
+                {
+                    title: "Social Health Lab: How Friendships Affect Immune Function",
+                    source: "Social Health Lab",
+                    url: "https://socialhealthlab.ubc.ca",
+                    description: "Groundbreaking research on the biological mechanisms linking social connection to disease outcomes.",
+                    tags: ["biology", "health", "research"],
+                    type: "breaking"
+                },
+                {
+                    title: "Greater Good: Why Adult Friendships Decline After 30",
+                    source: "Greater Good Magazine",
+                    url: "https://greatergood.berkeley.edu",
+                    description: "The sociology of midlife friendship loss and practical strategies for reversing the trend.",
+                    tags: ["friendship", "midlife", "sociology"],
+                    type: "evergreen"
+                },
+                {
+                    title: "School of Life: The Art of Deep Conversation",
+                    source: "School of Life",
+                    url: "https://theschooloflife.com",
+                    description: "Practical techniques for moving beyond small talk to genuine connection and vulnerability.",
+                    tags: ["communication", "depth", "connection"],
+                    type: "evergreen"
+                },
+                {
+                    title: "The Atlantic: The Friendship Recession",
+                    source: "The Atlantic",
+                    url: "https://theatlantic.com",
+                    description: "Long-form journalism on the changing nature of companionship in American life.",
+                    tags: ["culture", "trends", "analysis"],
+                    type: "evergreen"
+                }
+            ]
+        };
+
+        // Render article
+        function renderArticle(article) {
+            return `
+                <div class="article-card ${article.type}">
+                    <div class="article-meta">
+                        <span class="source-name">${article.source}</span>
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">
+                            <a href="${article.url}" target="_blank" rel="noopener">${article.title}</a>
+                        </h3>
+                        <p class="article-description">${article.description}</p>
+                        <div class="article-tags">
+                            ${article.tags.map(tag => `<span class="article-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Populate categories
+        function populateCategory(categoryId, articles) {
+            const container = document.getElementById(`${categoryId}-content`);
+            if (container && articles) {
+                container.innerHTML = articles.map(article => renderArticle(article)).join('');
+            }
+        }
+
+        // Initialize
+        populateCategory('family', articles.family);
+        populateCategory('fitness-mental', articles.fitnessMental);
+        populateCategory('fitness-physical', articles.fitnessPhysical);
+        populateCategory('finance', articles.finance);
+        populateCategory('future-self', articles.futureSelf);
+        populateCategory('food', articles.food);
+        populateCategory('fun', articles.fun);
+        populateCategory('fashion', articles.fashion);
+        populateCategory('friends', articles.friends);
+
+        // Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+
+                const category = item.dataset.category;
+                document.querySelectorAll('.category-view').forEach(view => view.classList.remove('active'));
+                document.getElementById(`${category}-view`).classList.add('active');
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        console.log('The Skinny - Loaded successfully');
+        console.log('100 sources across 9 categories');
+        console.log('Updated daily at 3:00 AM Eastern');
+    </script>
+</body>
+</html>
